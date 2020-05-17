@@ -1,0 +1,72 @@
+<!DOCTYPE html> 
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<title>Tip Calculator</title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<script
+src="https://code.jquery.com/jquery-3.3.1.js"
+integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+crossorigin="anonymous"></script>
+<style>
+#calculation{
+	margin: 20px 0px 0px 0px;
+}
+
+.main{
+	width: 400px;
+	height: 600px;
+	color:white;
+	background-color: black; 
+	padding: 20px 0px 0px 20px;
+}
+
+</style>
+</head>
+<body>
+<div class="main">
+	<div class="row">
+		<div>
+		<h1>Tip Calculator</h1>
+		<span>Please Input Total + Number of People + Tip Value </span>
+		</div>
+		<div class="form">
+		<form>
+			<h3>Total:</h3><input id="billAmount" type="text" size="4" name>
+			<h3>Party Size:</h3><input id="partySz" type="text" size="4"><br>
+			<h3>Value:</h3><input id="tipValue" type="text" size="4">% <br>
+			<button type="button" id="calculation">Calculate</button>
+			<h3><u>Amount</u></h3>
+		</form>
+		</div>
+		<div id="totaledTip">
+		</div>
+	</div>
+</div>
+
+<script>
+$(function(){
+	function calculateTip(){
+		var billAmt = $("#billAmount").val();
+		var partySize = $("#partySz").val();
+		var tip = $("#tipValue").val();
+		tip = tip * .01;
+		
+		var afterCalculation = $("#totaledTip");
+		var total = (billAmt * tip) / partySize;
+		afterCalculation.html(total);
+	}
+
+	function onCalculate(){
+		$("#calculation").click(function() {
+			calculateTip();
+		});
+	}
+
+	onCalculate();
+});
+</script>
+
+
+</body>
+</html>
